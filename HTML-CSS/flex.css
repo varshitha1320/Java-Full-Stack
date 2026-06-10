@@ -1,0 +1,16 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color:palevioletred;
+    color: black    ;
+}
+.flvors{
+    display: flex;
+    gap: 1cm;
+}
+ul{
+    display: flex;
+    gap: 1cm;
+
+
+}
