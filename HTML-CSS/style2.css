@@ -1,0 +1,18 @@
+body{
+    background-color:orange;
+
+}
+img{
+    animation: picture 2s ease-in-out 1s infinite;
+}
+@keyframes picture{
+    0%{
+        transform: rotate(0deg,10deg) ;
+    }
+    50%{
+        transform: rotate(180deg,10deg);
+    }
+    100%{
+        transform: rotate(360deg,10deg);
+    }
+}
