@@ -1,55 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varshitha</title>
-    <style>
-        b{
-            color: darkmagenta;
-        }
-    </style><!--internal-->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Varshitha | Portfolio</title>
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #0f172a, #1e293b);
+      --panel: rgba(15, 23, 42, 0.78);
+      --text: #eff6ff;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #a78bfa;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    body.light {
+      --bg: linear-gradient(135deg, #f8fbff, #e0f2fe);
+      --panel: rgba(255, 255, 255, 0.88);
+      --text: #0f172a;
+      --muted: #334155;
+      --accent: #0ea5e9;
+      --accent-2: #8b5cf6;
+      --shadow: 0 18px 40px rgba(148, 163, 184, 0.25);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand h1 { margin: 0; font-size: 1.6rem; }
+    .brand p { margin: 6px 0 0; color: var(--muted); }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card h2 { font-size: 2rem; margin: 0 0 8px; }
+    .profile-card .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .profile-card p, .details p { color: var(--muted); line-height: 1.6; }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mini-box {
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .mini-box strong { display: block; margin-bottom: 6px; color: var(--text); }
+    .mini-box span { color: var(--muted); font-size: 0.95rem; }
+
+    .details h3, .skills h3, .projects h3 { margin-top: 0; }
+    ul { padding-left: 18px; color: var(--muted); }
+    li { margin-bottom: 6px; }
+
+    .skills .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(167, 139, 250, 0.12);
+      border: 1px solid rgba(167, 139, 250, 0.18);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .projects .project {
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      margin-bottom: 12px;
+    }
+
+    .project h4 { margin: 0 0 6px; font-size: 1rem; }
+    .project p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 16px 0 8px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-     <h1> Bio-Data</h1><hr>
-     <h2 style="color: aqua;">Varshitha</h2><!--inline-->
-<p>I am <b> Varshitha</b>.I am currrently pursuing <u>B.tech</u> 3<sup>rd</sup> in the field of <i>CSE</i> in MTIET
-<br>I participated in <big>HACKATON</big> which is held in <b>Sidhartha college</b>  </p>
-<p>Programming languages:
-    <ol>
-        <li>C++</li><li>python</li><li>java</li>
-    </ol>
-</p>
-<p>
-    <table>
-        <tr>
-            <th>4 <sup>th</sup>semester</th>
-            <th>Marks</th>
-            <th>Grade</th>
-        </tr>
-        <tr>
-            <td id="one">DBMS</td>
-            <td>81</td>
-            <td>A</td>
-        </tr>
-        <tr>
-            <td class="one">SE</td>
-            <td>84</td>
-            <td>A</td>
-        </tr>
-        <tr>
-            <td>OS</td>
-            <td>75</td>
-            <td>B</td>
-        </tr>
-        <tr>
-            <td>p&s</td>
-            <td>97</td>
-            <td>S</td>
-        </tr>
-    </table>
-</p>
-<a href="form.html">Form</a>
+  <main class="page">
+    <header>
+      <div class="brand">
+        <h1>Varshitha Portfolio</h1>
+        <p>Creative and dedicated software engineer</p>
+      </div>
+      <button id="themeBtn" type="button">Toggle Theme</button>
+    </header>
+
+    <section class="grid">
+      <article class="card profile-card">
+        <p class="tag">B.Tech CSE Student | Software Engineer</p>
+        <h2>Hello, I’m Varshitha</h2>
+        <p>
+          I am a passionate software engineer with strong interest in building practical web solutions,
+          learning new technologies, and creating user-friendly digital experiences.
+        </p>
+        <div class="mini-grid">
+          <div class="mini-box">
+            <strong>Name</strong>
+            <span>Varshitha</span>
+          </div>
+          <div class="mini-box">
+            <strong>Degree</strong>
+            <span>B.Tech in Computer Science & Engineering</span>
+          </div>
+          <div class="mini-box">
+            <strong>College</strong>
+            <span>Mother Theresa Engineering College</span>
+          </div>
+          <div class="mini-box">
+            <strong>Profession</strong>
+            <span>Software Engineer</span>
+          </div>
+        </div>
+      </article>
+
+      <aside class="card details">
+        <h3>About Me</h3>
+        <p>
+          I enjoy solving problems with code, designing clean interfaces, and continuously improving my
+          technical skills. My goal is to build efficient software that makes lives easier.
+        </p>
+        <h3>Skills</h3>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Frontend development</li>
+          <li>Problem solving and teamwork</li>
+          <li>Continuous learning and adaptation</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="grid" style="margin-top: 24px;">
+      <article class="card skills">
+        <h3>Technical Skills</h3>
+        <div class="chip-row">
+          <span class="chip">Java</span>
+          <span class="chip">Python</span>
+          <span class="chip">C++</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Web Development</span>
+          <span class="chip">UI Design</span>
+        </div>
+      </article>
+
+      <article class="card projects">
+        <h3>Projects</h3>
+        <div class="project">
+          <h4>Portfolio Website</h4>
+          <p>Designed a responsive personal portfolio using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project">
+          <h4>Web Applications</h4>
+          <p>Built interactive web pages and improved user experience through clean design.</p>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Varshitha | Software Engineer
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      themeBtn.textContent = document.body.classList.contains('light')
+        ? 'Switch to Dark'
+        : 'Toggle Theme';
+    });
+  </script>
 </body>
 </html>
