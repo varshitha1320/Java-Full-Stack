@@ -3,11 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>align1</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Birthday Surprise</title>
+    <link rel="stylesheet" href="Manipulation.css">
 </head>
 <body>
-    <img src =" C:\Users\VenuS\Downloads\WhatsApp Image 2026-06-09 at 10.41.21.jpeg"
-    
+    <main class="welcome-card">
+        <h1>Birthday Surprise</h1>
+        <p>Click the button below to begin your birthday celebration.</p>
+
+        <button id="startBtn" type="button">Open Birthday Page</button>
+
+        <section id="choicePanel" class="hidden" aria-live="polite">
+            <h2>Happy Birthday!</h2>
+            <p>Wishing you a wonderful day filled with joy, smiles, and sweet memories.</p>
+
+            <div class="button-row">
+                <a class="btn btn-primary" href="Manipulation.html">Continue</a>
+                <button id="exitBtn" class="btn btn-secondary" type="button">Exit</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const choicePanel = document.getElementById('choicePanel');
+        const exitBtn = document.getElementById('exitBtn');
+
+        startBtn.addEventListener('click', () => {
+            choicePanel.classList.remove('hidden');
+            startBtn.disabled = true;
+        });
+
+        exitBtn.addEventListener('click', () => {
+            choicePanel.classList.add('hidden');
+            startBtn.disabled = false;
+        });
+    </script>
 </body>
 </html>

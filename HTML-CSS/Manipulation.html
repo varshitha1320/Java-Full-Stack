@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Greeting</title>
+    <link rel="stylesheet" href="Manipulation.css">
+</head>
+<body>
+    <div class="balloon" style="left: 8%; background: #ff7ab6;"></div>
+    <div class="balloon" style="left: 20%; background: #ffd36b;"></div>
+    <div class="balloon" style="left: 32%; background: #87d6ff;"></div>
+    <div class="balloon" style="left: 46%; background: #a98cff;"></div>
+    <div class="balloon" style="left: 60%; background: #7ee0b4;"></div>
+    <div class="balloon" style="left: 74%; background: #ffb86b;"></div>
+    <div class="balloon" style="left: 86%; background: #ff9ccf;"></div>
+
+    <main class="card">
+        <h1>Happy Birthday!</h1>
+        <img src="New folder/cake.jpg" alt="Birthday cake">
+        <p>
+            Wishing you a day full of laughter, love, and sweet surprises.
+            May this year bring you happiness, success, and beautiful memories.
+            Enjoy your special day to the fullest!
+        </p>
+        <button id="playSongBtn" class="song-btn" type="button">Play Birthday Song</button>
+    </main>
+
+    <script>
+        const playSongBtn = document.getElementById('playSongBtn');
+
+        function playTone(freq, duration, type = 'sine', volume = 0.04) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            const ctx = new AudioCtx();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = type;
+            osc.frequency.value = freq;
+            gain.gain.value = volume;
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            const start = ctx.currentTime;
+            osc.start(start);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+            osc.stop(start + duration);
+            setTimeout(() => ctx.close(), duration * 1000 + 100);
+        }
+
+        function playBirthdaySong() {
+            const melody = [
+                [392, 0.35], [392, 0.35], [440, 0.7], [392, 0.7], [523, 0.7],
+                [494, 1.0], [392, 0.35], [392, 0.35], [440, 0.7], [392, 0.7],
+                [587, 0.7], [523, 1.0], [392, 0.35], [392, 0.35], [784, 0.7],
+                [659, 0.7], [523, 0.7], [494, 0.7], [440, 1.2]
+            ];
+
+            melody.forEach((note, index) => {
+                setTimeout(() => playTone(note[0], note[1], 'triangle', 0.025), index * 370);
+            });
+        }
+
+        playSongBtn.addEventListener('click', () => {
+            playBirthdaySong();
+            playSongBtn.textContent = 'Birthday Song Playing...';
+            playSongBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>
