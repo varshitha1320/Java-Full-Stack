@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catch the Candy Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #game-area {
+      width: 400px;
+      height: 500px;
+      border: 3px solid #333;
+      margin: 20px auto;
+      position: relative;
+      background-color: #f9f9f9;
+      overflow: hidden;
+    }
+
+    #basket {
+      width: 80px;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      left: 160px;
+      background-color: brown;
+    }
+
+    .candy {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 0;
+      background-color: red; /* fallback color */
+      background-image: url("kitkat.jpg"); /* replace with your KitKat image */
+      background-size: cover;
+    }
+
+    #missed {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>🍫 Catch the KitKat Candy!</h2>
+  <p>Move the basket with arrow keys to catch falling candies.</p>
+  <div id="game-area">
+    <div id="basket"></div>
+  </div>
+  <p id="score">Score: 0</p>
+  <p id="missed"></p>
+
+  <script>
+    const gameArea = document.getElementById("game-area");
+    const basket = document.getElementById("basket");
+    const scoreDisplay = document.getElementById("score");
+    const missedDisplay = document.getElementById("missed");
+
+    let basketX = 160;
+    const basketSpeed = 20;
+    let score = 0;
+    let missed = 0;
+
+    // Move basket with arrow keys
+    document.addEventListener("keydown", function (e) {
+      if (e.code === "ArrowLeft") basketX -= basketSpeed;
+      if (e.code === "ArrowRight") basketX += basketSpeed;
+
+      // Keep basket inside game area
+      basketX = Math.max(0, Math.min(basketX, 320));
+      basket.style.left = basketX + "px";
+    });
+
+    // Create falling candy
+    function createCandy() {
+      const candy = document.createElement("div");
+      candy.classList.add("candy");
+      candy.style.left = Math.floor(Math.random() * 360) + "px";
+      gameArea.appendChild(candy);
+
+      let candyY = 0;
+      const fallSpeed = 2;
+
+      function fall() {
+        candyY += fallSpeed;
+        candy.style.top = candyY + "px";
+
+        // Collision detection
+        const basketRect = basket.getBoundingClientRect();
+        const candyRect = candy.getBoundingClientRect();
+
+        if (
+          basketRect.left < candyRect.right &&
+          basketRect.right > candyRect.left &&
+          basketRect.top < candyRect.bottom &&
+          basketRect.bottom > candyRect.top
+        ) {
+          score++;
+          scoreDisplay.textContent = "Score: " + score;
+          candy.remove();
+          return;
+        }
+
+        // Missed candy
+        if (candyY > 500) {
+          missed++;
+          missedDisplay.textContent = "Missed: " + missed;
+          candy.remove();
+          return;
+        }
+
+        requestAnimationFrame(fall);
+      }
+
+      fall();
+    }
+
+    // Drop candies every 1.5 seconds
+    setInterval(createCandy, 1500);
+  </script>
+</body>
+</html>
