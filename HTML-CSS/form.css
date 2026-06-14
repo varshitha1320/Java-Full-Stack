@@ -1,0 +1,36 @@
+/* License card container */
+#licenseCard {
+  display: flex;                 /* enables flexbox */
+  justify-content: space-between; /* text left, photo right */
+  align-items: flex-start;        /* align items at the top */
+  border: 2px solid #333;
+  border-radius: 8px; 
+  padding: 15px;
+  width: 500px;
+  background: #f9f9f9;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Text details on the left */
+#licenseDetails {
+  flex: 2;
+}
+
+#licenseDetails p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+/* Photo on the right */
+#licensePhoto {
+  flex: 1;
+  text-align: center;
+}
+
+#licensePhoto img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 2px solid #555;
+  border-radius: 6px;
+}
